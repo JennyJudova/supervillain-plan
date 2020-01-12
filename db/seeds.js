@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { dbURI } = require('../config/environment');
 const Evilplan = require('../models/Evilplan');
+const User = require('../models/User');
 
 mongoose.connect(
   dbURI,
@@ -10,14 +11,26 @@ mongoose.connect(
 
     db.dropDatabase()
       .then(() => {
+        return User.create([
+          {
+            username: 'JJ',
+            email: 'jj@email.com',
+            password: 'pass',
+            passwordConfirmation: 'pass'
+          }
+        ]);
+      })
+      .then((users) => {
         return Evilplan.create([
           {
             name: 'Evil plan',
-            description: 'my Evil plan'
+            description: 'my Evil plan',
+            user: users[0]
           },
           {
             name: 'very Evil plan',
-            description: 'my very Evil plan'
+            description: 'my very Evil plan',
+            user: users[0]
           }
         ]);
       })
