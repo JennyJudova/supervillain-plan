@@ -28,9 +28,10 @@ function login(req, res) {
 }
 
 function profile(req, res) {
-  // console.log(req.currentUser._id)
-  // console.log(req.body)
+  console.log(req.currentUser._id);
+  console.log(req.body);
   User.findById(req.currentUser._id)
+    .populate('plans')
     .then((user) => res.status(200).json(user))
     .catch((err) => res.json(err));
 }

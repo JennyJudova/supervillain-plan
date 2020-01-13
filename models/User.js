@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -6,12 +7,20 @@ const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    image: { type: String, required: false },
+    bio: { type: String, required: false }
   },
   {
     timestamps: true
   }
 );
+
+userSchema.virtual('plans', {
+  ref: 'Evilplan',
+  localField: '_id',
+  foreignField: 'user'
+});
 
 userSchema.set('toJSON', {
   transform(doc, json) {
@@ -52,6 +61,7 @@ userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+// userSchema.plugin(require('mongoose-autopopulate'));
 userSchema.plugin(require('mongoose-unique-validator'));
 
 module.exports = mongoose.model('User', userSchema);

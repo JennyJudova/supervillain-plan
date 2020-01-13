@@ -3,7 +3,7 @@ const Evilplan = require('../models/Evilplan'); // we need the Animal models, at
 // index route GET - /animals
 function index(req, res) {
   Evilplan.find() // finds all the plans
-    .populate('user')
+    // .populate('user')
     // .populate('comments.user')
     .then((plans) => res.status(200).json(plans)) // if found, sends back the plans in an JSON array
     .catch(() => res.status(404).json({ message: 'Not Found index function' })); // if any error, sends back 404 not found message
