@@ -19,10 +19,12 @@ const userSchema = new mongoose.Schema(
 userSchema.virtual('plans', {
   ref: 'Evilplan',
   localField: '_id',
-  foreignField: 'user'
+  foreignField: 'user',
+  autopopulate: true
 });
 
 userSchema.set('toJSON', {
+  virtuals: true,
   transform(doc, json) {
     delete json.password;
     delete json.email;
@@ -61,7 +63,7 @@ userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-// userSchema.plugin(require('mongoose-autopopulate'));
+userSchema.plugin(require('mongoose-autopopulate'));
 userSchema.plugin(require('mongoose-unique-validator'));
 
 module.exports = mongoose.model('User', userSchema);
