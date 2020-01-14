@@ -18,8 +18,8 @@ const Evilplan = new mongoose.Schema(
     user: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: true,
-      autopopulate: true
+      required: true
+      // autopopulate: true
     },
     resources: { type: String, required: false },
     comments: [commentSchema]
@@ -29,7 +29,7 @@ const Evilplan = new mongoose.Schema(
   }
 );
 
-Evilplan.plugin(require('mongoose-autopopulate'));
+// Evilplan.plugin(require('mongoose-autopopulate'));
 Evilplan.plugin(require('mongoose-unique-validator'));
 
 module.exports = mongoose.model('Evilplan', Evilplan);
