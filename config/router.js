@@ -8,14 +8,21 @@ router
   .get(evilplans.index)
   .post(evilplans.create); // secure route
 
-router.route('/evilplans/:id').get(evilplans.show);
-// .put(secureRoute, legends.update) //secure route
-// .delete(secureRoute, legends.remove) //secure route
+router
+  .route('/evilplans/:id')
+  .get(evilplans.show)
+  .put(secureRoute, evilplans.update) // secure route
+  .delete(secureRoute, evilplans.remove); // secure route
 
 router
   .route('/evilplans/:id/comments')
   .post(secureRoute, evilplans.commentCreate); // secure route
 // .get(evilplans.commentsShow)
+
+router
+  .route('/evilplans/:id/comments/:commentID')
+  .put(secureRoute, evilplans.commentUpdate) // secure route
+  .delete(secureRoute, evilplans.commentDelete); // secure route
 
 router.route('/register').post(users.register);
 

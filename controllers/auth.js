@@ -28,7 +28,7 @@ function login(req, res) {
 }
 
 function profile(req, res) {
-  console.log(req.currentUser._id);
+  // console.log(req.currentUser._id);
   // console.log(req.body);
   User.findById(req.currentUser._id)
     .populate('plans')
