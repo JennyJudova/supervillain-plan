@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './styles/style.scss';
 import Home from './components/common/home';
+import PlanShow from './components/plans/PlanShow';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <main>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/evilplans/:id" component={PlanShow} />
         </Switch>
       </main>
     </BrowserRouter>
