@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const evilplans = require('../controllers/evilplans');
 const users = require('../controllers/auth');
+const villains = require('../controllers/villains');
 const secureRoute = require('../lib/secureRoute');
 
+// EVILPLANS
 router
   .route('/evilplans')
   .get(evilplans.index)
@@ -24,6 +26,12 @@ router
   .put(secureRoute, evilplans.commentUpdate) // secure route
   .delete(secureRoute, evilplans.commentDelete); // secure route
 
+// VILLAINS
+router.route('/villains').get(villains.index);
+
+router.route('/villains/:id').get(villains.show);
+
+// USERS
 router.route('/register').post(users.register);
 
 router.route('/login').post(users.login);
