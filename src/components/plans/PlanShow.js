@@ -1,6 +1,6 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 export default function PlanShow(props) {
   const [evilPlan, setEvilPlan] = useState();
@@ -8,7 +8,6 @@ export default function PlanShow(props) {
   const { id } = props.match.params;
 
   const getData = () => {
-    console.log('2', id);
     const planid = id;
     axios
       .get(`/api/evilplans/${planid}`)
@@ -16,7 +15,9 @@ export default function PlanShow(props) {
         console.log(res.data);
         setEvilPlan(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setErrors(err);
+      });
   };
 
   useEffect(() => {
@@ -34,16 +35,16 @@ export default function PlanShow(props) {
           <p>plan by {evilPlan.user.username}</p>
           <p>{evilPlan.user.universe}</p>
           <p>{evilPlan.description}</p>
-        </div>
-      )}
-      {evilPlan && evilPlan.comments && (
-        <div>
-          <h3>Comments</h3>
-          <ul>
-            {evilPlan.comments.map((comment) => {
-              return <li key={comment.id}>{comment.text}</li>;
-            })}
-          </ul>
+          {evilPlan.comments.length > 0 && (
+            <div>
+              <h3>Comments</h3>
+              <ul>
+                {evilPlan.comments.map((comment) => {
+                  return <li key={comment._id}>{comment.text}</li>;
+                })}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </div>
