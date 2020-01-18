@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     image: { type: String, required: false },
-    bio: { type: String, required: false }
+    bio: { type: String, required: false },
+    universe: { type: String, required: false }
   },
   {
     timestamps: true
