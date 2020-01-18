@@ -3,16 +3,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-export default function PlansAll() {
-  const [allEvilPlans, setAllEvilPlans] = useState();
+export default function VillainsAll() {
+  const [allVillains, setAllVillains] = useState();
   const [errors, setErrors] = useState();
 
   const getData = () => {
     axios
-      .get(`/api/evilplans/`)
+      .get(`/api/villains/`)
       .then((res) => {
         console.log(res.data);
-        setAllEvilPlans(res.data);
+        setAllVillains(res.data);
       })
       .catch((err) => {
         setErrors(err);
@@ -25,13 +25,13 @@ export default function PlansAll() {
 
   return (
     <div>
-      <h2>All Plans</h2>
-      {allEvilPlans &&
-        allEvilPlans.map((plan) => (
-          <Link to={`/evilplans/${plan._id}`}>
-            <div key={plan._id}>
-              <img src={plan.image} alt="Evil Plan" height="100px" />
-              <h3>{plan.name}</h3>
+      <h2>All Villains</h2>
+      {allVillains &&
+        allVillains.map((villain) => (
+          <Link to={`/villains/${villain._id}`}>
+            <div key={villain._id}>
+              <img src={villain.image} alt="villain portrait" height="100px" />
+              <h3>{villain.username}</h3>
             </div>
           </Link>
         ))}
