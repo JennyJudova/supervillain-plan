@@ -9,16 +9,19 @@ import PlansAll from './components/plans/PlansAll';
 import VillainsAll from './components/villains/VillainsAll';
 import VillainsShow from './components/villains/VillainShow';
 
+import Register from './components/auth/Register';
+
 const App = () => {
   return (
     <BrowserRouter>
       <main>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/evilplans/:id" component={PlanShow} />
-          <Route exact path="/evilplans" component={PlansAll} />
-          <Route exact path="/villains" component={VillainsAll} />
-          <Route exact path="/villains/:id" component={VillainsShow} />
+          <Route path="/evilplans/:id" component={PlanShow} />
+          <Route path="/evilplans" component={PlansAll} />
+          <Route path="/villains" component={VillainsAll} />
+          <Route path="/villains/:id" component={VillainsShow} />
+          <Route path="/register" component={Register} />
         </Switch>
       </main>
     </BrowserRouter>
