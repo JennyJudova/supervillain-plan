@@ -38,4 +38,6 @@ router.route('/login').post(users.login);
 
 router.route('/profile').get(secureRoute, users.profile); // secure route
 
+router.route('/profile/edit').put(secureRoute, users.update); // secure route
+
 module.exports = router; // exporting our router module for use in index.js
