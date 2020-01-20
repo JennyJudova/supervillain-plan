@@ -10,6 +10,7 @@ import VillainsAll from './components/villains/VillainsAll';
 import VillainsShow from './components/villains/VillainShow';
 
 import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/villains" component={VillainsAll} />
           <Route path="/villains/:id" component={VillainsShow} />
           <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
         </Switch>
       </main>
     </BrowserRouter>
