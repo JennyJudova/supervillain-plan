@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import './styles/style.scss';
-import Home from './components/common/home';
+import Home from './components/common/Home';
+import Navbar from './components/common/Navbar';
 import PlanShow from './components/plans/PlanShow';
 import PlansAll from './components/plans/PlansAll';
 import VillainsAll from './components/villains/VillainsAll';
@@ -16,6 +17,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <main>
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/evilplans/:id" component={PlanShow} />

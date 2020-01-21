@@ -21,6 +21,7 @@ const Evilplan = new mongoose.Schema(
       required: true
       // autopopulate: true
     },
+    success: { type: Boolean, required: false },
     resources: { type: String, required: false },
     comments: [commentSchema]
   },
