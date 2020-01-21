@@ -38,55 +38,52 @@ export default function Register() {
   };
 
   return (
-    <div className="mainFormWrapRegister">
-      <div className="formWrapper">
-        <form className="panelWrapper" onSubmit={handleSubmit}>
-          <h2>Register</h2>
+    <div className="formWrapper">
+      <h2>Register</h2>
+      <form onSubmit={handleSubmit}>
+        <p>
+          Username<span>*</span>
+        </p>
+        <input
+          name="username"
+          placeholder="This field is required."
+          onChange={handleUserChange}
+        />
 
-          <div>
-            Username<span>*</span>
-          </div>
-          <input
-            name="username"
-            placeholder="This field is required."
-            onChange={handleUserChange}
-          />
+        <p>
+          Email<span>*</span>
+        </p>
+        <input
+          name="email"
+          placeholder="This field is required."
+          onChange={handleUserChange}
+        />
 
-          <div>
-            Email<span>*</span>
-          </div>
-          <input
-            name="email"
-            placeholder="This field is required."
-            onChange={handleUserChange}
-          />
+        <p>
+          Password<span>*</span>
+        </p>
+        <input
+          name="password"
+          type="password"
+          placeholder="This field is required."
+          onChange={handleUserChange}
+        />
 
-          <div>
-            Password<span>*</span>
-          </div>
-          <input
-            name="password"
-            type="password"
-            placeholder="This field is required."
-            onChange={handleUserChange}
-          />
-
-          <div>
-            Password Confirmation<span>*</span>
-          </div>
-          <input
-            name="passwordConfirmation"
-            type="password"
-            placeholder="This field is required."
-            onChange={handleUserChange}
-          />
-
-          <button type="submit">Register</button>
-        </form>
-        <Link to="/login">
-          <small>Already have an account yet? Click here to login.</small>
-        </Link>
-      </div>
+        <p>
+          Password Confirmation<span>*</span>
+        </p>
+        <input
+          name="passwordConfirmation"
+          type="password"
+          placeholder="This field is required."
+          onChange={handleUserChange}
+        />
+        <br />
+        <button type="submit">Register</button>
+      </form>
+      <Link to="/login">
+        <small>Already have an account yet? Click here to login.</small>
+      </Link>
     </div>
   );
 }

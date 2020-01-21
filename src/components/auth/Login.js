@@ -36,31 +36,29 @@ export default function Register() {
   };
 
   return (
-    <div className="mainFormWrapLogin">
-      <div className="formWrapper">
-        <form className="panelWrapper" onSubmit={handleSubmit}>
-          <h2>Login</h2>
-          <p>Email</p>
-          <input
-            name="email"
-            placeholder="name@email.com"
-            onChange={handleChange}
-          />
-          <p>Password</p>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            onChange={handleChange}
-          />
-          <br />
-          {errors && <p>Oops, something went wrong. please try again</p>}
-          <button type="submit">Login</button>
-          <Link to="/register">
-            <small>No account yet? Click here to register.</small>
-          </Link>
-        </form>
-      </div>
+    <div className="formWrapper">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <p>Email</p>
+        <input
+          name="email"
+          placeholder="Name@email.com"
+          onChange={handleChange}
+        />
+        <p>Password</p>
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
+        <br />
+        {errors && <p>Oops, something went wrong. please try again</p>}
+        <button type="submit">Login</button>
+      </form>
+      <Link to="/register">
+        <small>No account yet? Click here to register.</small>
+      </Link>
     </div>
   );
 }
