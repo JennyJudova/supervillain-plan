@@ -25,26 +25,32 @@ export default function PlanShow(props) {
   }, []);
 
   return (
-    <div>
-      <h2>Plan show</h2>
+    <div className="planWrapper">
       {evilPlan && (
         <div>
-          <img src={evilPlan.image} alt="Evil Plan" height="100px" />
-          <p>{evilPlan.name}</p>
-          <p>{evilPlan.resources}</p>
-          <p>plan by {evilPlan.user.username}</p>
-          <p>{evilPlan.user.universe}</p>
-          <p>{evilPlan.description}</p>
-          {evilPlan.comments.length > 0 && (
-            <div>
-              <h3>Comments</h3>
-              <ul>
-                {evilPlan.comments.map((comment) => {
-                  return <li key={comment._id}>{comment.text}</li>;
-                })}
-              </ul>
-            </div>
-          )}
+          <h2>{evilPlan.name}</h2>
+          <img src={evilPlan.image} alt="Evil Plan" />
+          <p>Plan by: {evilPlan.user.username}</p>
+          <p>Universe: {evilPlan.user.universe}</p>
+          <p>Description: {evilPlan.description}</p>
+          <div className="commentWrapper">
+            <h3>Comments</h3>
+            {evilPlan.comments.length > 0 && (
+              <div>
+                <ul>
+                  {evilPlan.comments.map((comment) => {
+                    return <li key={comment._id}>{comment.text}</li>;
+                  })}
+                </ul>
+              </div>
+            )}
+            <textarea
+              rows="4"
+              cols="50"
+              name="comment"
+              placeholder="Like the plan? Leave your comment here."
+            />
+          </div>
         </div>
       )}
     </div>

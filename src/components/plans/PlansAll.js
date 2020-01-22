@@ -26,7 +26,7 @@ export default function PlansAll() {
   return (
     <div>
       <h2>All Plans</h2>
-      <div className="indexwrapper">
+      <div className="indexWrapper">
         {allEvilPlans &&
           allEvilPlans.map((plan) => (
             <div key={plan._id}>
