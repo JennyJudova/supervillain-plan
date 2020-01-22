@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Auth from '../../lib/auth';
 
 export default function Register() {
   const [login, setLogin] = useState();
   const [errors, setErrors] = useState();
+  const history = useHistory();
 
   const handleChange = (e) => {
     const updateLogin = { ...login };
@@ -16,15 +17,12 @@ export default function Register() {
   const handleSubmit = (e) => {
     console.log('user', login);
     e.preventDefault();
-    // const history = useHistory();
-    // const history = useHistory;
     axios
       .post('/api/login', login)
       .then((res) => {
         Auth.setToken(res.data.token);
         console.log(res.data.token);
-        // history.push('/villains');
-        // this.props.history.goBack();
+        history.push('/villains');
       })
       .catch((err) => setErrors(err));
   };

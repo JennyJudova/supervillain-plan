@@ -26,7 +26,7 @@ export default function VillainsAll() {
   return (
     <div>
       <h2>All Villains</h2>
-      <div className="indexwrapper">
+      <div className="indexWrapper">
         {allVillains &&
           allVillains.map((villain) => (
             <div key={villain._id}>

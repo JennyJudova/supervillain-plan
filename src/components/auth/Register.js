@@ -7,8 +7,7 @@ import Auth from '../../lib/auth';
 export default function Register() {
   const [user, setUser] = useState();
   const [errors, setErrors] = useState();
-  // const { history } = useHistory();
-  // const history = require("react-router-dom").History;
+  const history = useHistory();
 
   const handleUserChange = (e) => {
     const updateUser = { ...user };
@@ -18,15 +17,12 @@ export default function Register() {
   const handleSubmit = (e) => {
     console.log('user', user);
     e.preventDefault();
-    // const history = useHistory();
-    // const history = useHistory;
     axios
       .post('/api/register', user)
       .then((res) => {
         Auth.setToken(res.data.token);
         console.log(res.data.token);
-        // history.push('/villains');
-        // this.props.history.goBack();
+        history.push('/villains');
       })
       .catch((err) => setErrors(err));
   };
