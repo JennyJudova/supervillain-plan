@@ -2,6 +2,12 @@
   border: 1px black solid;
   padding: 20px;
   img {
-    width: 80%;
+    width: 50%;
+    max-height: 300px;
+    border-radius: 1px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

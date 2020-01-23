@@ -33,10 +33,10 @@ export default function PlanShow(props) {
           <p>Plan by: {evilPlan.user.username}</p>
           <p>Universe: {evilPlan.user.universe}</p>
           <p>Description: {evilPlan.description}</p>
-          <div className="commentWrapper">
+          <div>
             <h3>Comments</h3>
             {evilPlan.comments.length > 0 && (
-              <div>
+              <div className="commentWrapper">
                 <ul>
                   {evilPlan.comments.map((comment) => {
                     return <li key={comment._id}>{comment.text}</li>;
